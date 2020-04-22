@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>GCFestival Registratie</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -26,6 +26,10 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<?php
+    require_once('../../private/initialize.php');
+    ?>
+
 </head>
 <body>
 	
@@ -33,31 +37,64 @@
 		<div class="container-login100" style="background-image: url('images/bg2.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
-					Account Login
+					Registratie
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5" method="POST">
+				<form class="login100-form validate-form p-b-33 p-t-5" action="registercomplete.php" method="POST">
 
-					<div class="wrap-input100 validate-input" data-validate = "Vul een geldig E-mail adres in">
-						<input class="input100" type="text" name="email" placeholder="E-mail adres">
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw voornaam in">
+						<input class="input100" type="text" name="voornaam" placeholder="Voornaam">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw tussenvoegsel in">
+						<input class="input100" type="text" name="tussenvoegsel" placeholder="Tussenvoegsel">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Vul een geldig wachtwoord in">
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw achternaam in">
+						<input class="input100" type="text" name="achternaam" placeholder="Achternaam">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw e-mail in">
+						<input class="input100" type="text" name="email" placeholder="E-mail">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw telefoonnummer in">
+						<input class="input100" type="text" name="telnr" placeholder="Telefoonnummer">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw straatnaam in">
+						<input class="input100" type="text" name="straat" placeholder="Straatnaam">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw huisnummer in">
+						<input class="input100" type="text" name="huisnr" placeholder="Huisnummer">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw postcode in">
+						<input class="input100" type="text" name="postcode" placeholder="Postcode">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Vul uw woonplaats in">
+						<input class="input100" type="text" name="woonplaats" placeholder="Woonplaats">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Vul uw wachtwoord in">
 						<input class="input100" type="password" name="wachtwoord" placeholder="Wachtwoord">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 
-						
-
-				</form>
-
 					<div class="container-login100-form-btn m-t-32">
 						<button class="login100-form-btn">
-							Login
+							<input style="background-color: unset; color:white;" type="submit" name="register" value="Registreren">
 						</button>
 					</div>
-							<center><a href="../register/register.html">Nog geen account? Registreer hier.</a></center>
-			</div>
+					<center><a href="../login/login.html">Heeft u al een account? klik dan hier.</a></center>
+			</div class="register">
 		</div>
 	</div>
 	

@@ -1,7 +1,10 @@
+<?php session_start();
+print_r($_SESSION) ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V16</title>
+	<title>GCFestival Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -26,6 +29,11 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+    <?php
+    require_once('../../private/initialize.php');
+    ?>
+
 </head>
 <body>
 	
@@ -35,28 +43,46 @@
 				<span class="login100-form-title p-b-41">
 					Account Login
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5">
+				<form class="login100-form validate-form p-b-33 p-t-5" method="POST">
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="E-mail adres">
+					<div class="wrap-input100 validate-input" data-validate = "Vul een geldig E-mail adres in">
+						<input class="input100" type="text" name="email" placeholder="E-mail adres">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Wachtwoord">
+					<div class="wrap-input100 validate-input" data-validate="Vul een geldig wachtwoord in">
+						<input class="input100" type="password" name="wachtwoord" placeholder="Wachtwoord">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
-					</div>
-
+                    </div>
+                    
 					<div class="container-login100-form-btn m-t-32">
 						<button class="login100-form-btn">
-							Registreer
+							Login
 						</button>
+						
+                    <?php if(!empty($_POST["email"]) && !empty($_POST["wachtwoord"])){ //als velden niet leeg zijn voer het uit
+                        $email = $_POST["email"];
+                        $wachtwoord = $_POST["wachtwoord"];
+
+                        $sql = "SELECT * FROM gebruiker WHERE email = '$email' and wachtwoord = '$wachtwoord'";
+
+                        $query = mysqli_query($db, $sql);
+                        $result = mysqli_num_rows($query);
+
+                        if($result === 1){ //als $result 1 (ja/overeenkomt met het data in het db) is dan direct hij naar profiel.php
+							
+							$_SESSION["login"] = true;
+							$_SESSION["username"] = $email;
+							header("Location: ../index.php"); //redirect naar index.html
+                            }
+                        }
+                    ?>
+                </form>
+
 					</div>
-					
-			</div class="register">
-			<a href="../register/register.html">Heeft u al een account? klik dan hier.</a>
+							<center><a href="../register/register.php">Nog geen account? Registreer hier.</a></center>
+			</div>
 		</div>
-		
 	</div>
 	
 

@@ -1,3 +1,6 @@
+<?php session_start();
+print_r($_SESSION) ?>
+
 <!DOCTYPE HTML>
 <!--
 	Intensify by TEMPLATED
@@ -24,7 +27,13 @@
 				</nav>
 				<a href="index.html" class="logo">GCFestival</a>
 				<nav class="right">
-					<a href="login/login.html" class="button alt">Log in</a>
+					<?php if(isset($_SESSION["login"]) == true){
+					$login = "<li><a href='login/uitloggen.php' class='button fit'>Uitloggen</a></li>";
+					echo $login;
+					}else{
+						$login = "<li><a href='login/login.php' class='button fit'>Login</a></li>";
+						echo $login;
+					}?>
 				</nav>
 			</header>
 
@@ -32,19 +41,28 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="login/login.html">Login</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="register/register.html">Registreer</a></li>
+					<li><a href="#two">Tickets</a></li>
+
 				</ul>
 				<ul class="actions vertical">
-					<li><a href="login/login.html" class="button fit">Login</a></li>
+					<?php if(isset($_SESSION["login"]) == true){
+					$login = "<li><a href='login/login.php' class='button fit'>Login</a></li>";
+					echo $login;
+					}else{
+						$uitloggen = "<li><a href='login/login.php' class='button fit'>Uitloggen</a></li>";
+						echo $uitloggen;
+					}
+					?>
 				</ul>
+				
 			</nav>
 
 		<!-- Banner -->
 			<section id="banner">
 				<div class="content">
 					<ul class="actions">
-						<li><a href="#one" class="button scrolly">Bestel uw tickets</a></li>
+						<li><a href="#two" class="button scrolly">Bestel uw tickets</a></li>
 					</ul>
 				</div>
 			</section>
@@ -55,7 +73,7 @@
 					<div class="flex-item left">
 						<div>
 							<h3>6 Maart 2020</h3>
-							<p>Morbi in sem quis dui plalorem ipsum<br /> euismod in, pharetra sed ultricies.</p>
+							<p>Morbi in sem quis dui plalorem ipsum</p>
 						</div>
 						<div>
 							<h3>13 Maart 2020</h3>
@@ -77,51 +95,34 @@
 					</div>
 				</div>
 			</section>
-
 		<!-- Two -->
-			<section id="two" class="wrapper style1 special">
-				<div class="inner">
-					<h2>Feugiat lorem</h2>
-					<figure>
-					    <blockquote>
-					        "Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra<br /> magna etiam lorem ultricies in diam. Sed arcu cras consequat."
-					    </blockquote>
-					    <footer>
-					        <cite class="author">Jane Anderson</cite>
-					        <cite class="company">CEO, Untitled</cite>
-					    </footer>
-					</figure>
-				</div>
-			</section>
-
-		<!-- Three -->
-			<section id="three" class="wrapper">
+			<section id="two" class="wrapper">
 				<div class="inner flex flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="images/pic02.jpg" alt="" />
+							<img src="images/ticket.png" alt="" />
 						</div>
 						<div class="content">
-							<h3>Consequat</h3>
-							<p>Placerat ornare. Pellentesque od sed euismod in, pharetra ltricies edarcu cas consequat.</p>
+							<h3>Basic</h3>
+							<p>€40.- per ticket</p>
 						</div>
 					</div>
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="images/pic03.jpg" alt="" />
+							<img src="images/ticket.png" alt="" />
 						</div>
 						<div class="content">
-							<h3>Adipiscing</h3>
-							<p>Morbi in sem quis dui placerat Pellentesque odio nisi, euismod pharetra lorem ipsum.</p>
+							<h3>Premium</h3>
+							<p>€60.- per ticket</p>
 						</div>
 					</div>
 					<div class="flex-item box">
 						<div class="image fit">
-							<img src="images/pic04.jpg" alt="" />
+							<img src="images/ticket.png" alt="" />
 						</div>
 						<div class="content">
-							<h3>Malesuada</h3>
-							<p>Nam dui mi, tincidunt quis, accu an porttitor, facilisis luctus que metus vulputate sem magna.</p>
+							<h3>VIP</h3>
+							<p>€100.- per ticket</p>
 						</div>
 					</div>
 				</div>

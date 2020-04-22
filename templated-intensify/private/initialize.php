@@ -7,11 +7,11 @@
     define("PUBLIC_PATH", PROJECT_PATH . '/public');
     define("SHARED_PATH", PRIVATE_PATH . '/shared');
     
-    require_once('functions.php');
+     //require_once('functions.php');
 
     define("WWW_ROOT", 'http://localhost/PHP-Opdrachten/Periode3/FestivalWebite/public/');
 
-    // require_once('db/database.php');
+     require_once('database.php');
 
     $db = db_connect();
 

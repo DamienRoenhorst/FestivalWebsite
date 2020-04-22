@@ -51,7 +51,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #fff;
+  color: rgb(255, 70, 125);
 }
 
 /*---------------------------------------------*/
