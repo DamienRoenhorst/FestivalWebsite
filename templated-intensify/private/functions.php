@@ -1,5 +1,4 @@
 <?php
-include_once "initialize.php";
 
 function getGegevensKlant($klantID) {
     global $db;
@@ -7,7 +6,7 @@ function getGegevensKlant($klantID) {
         die("Connection failed: " . $db->connect_error);
     }
 
-    $sql = "SELECT * FROM klanten WHERE KlantID = " . $klantID;
+    $sql = "SELECT * FROM gebruiker WHERE KlantID = " . $klantID;
 
     $query = mysqli_query($db, $sql);
     $result = mysqli_fetch_assoc($query);

@@ -1,6 +1,6 @@
-<?php session_start();
-print_r($_SESSION) ?>
-
+<?php
+    require_once('../../private/initialize.php');
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +30,7 @@ print_r($_SESSION) ?>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
-    <?php
-    require_once('../../private/initialize.php');
-    ?>
+    
 
 </head>
 <body>
@@ -68,11 +66,12 @@ print_r($_SESSION) ?>
 
                         $query = mysqli_query($db, $sql);
                         $result = mysqli_num_rows($query);
-
+						$row = mysqli_fetch_array($query);
                         if($result === 1){ //als $result 1 (ja/overeenkomt met het data in het db) is dan direct hij naar profiel.php
 							
-							$_SESSION["login"] = true;
+							$_SESSION['login'] = true;
 							$_SESSION["username"] = $email;
+							$_SESSION["klantID"] = $row["klantID"];
 							header("Location: ../index.php"); //redirect naar index.html
                             }
                         }
